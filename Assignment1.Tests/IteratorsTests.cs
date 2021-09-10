@@ -9,16 +9,18 @@ namespace Assignment1.Tests
         [Fact]
         public void Flatten_Given_Matrix_Return_Array_ABCD()
         {
-            //Assign
-            var input = new string[]{{"A","B"}, {"C", "D"}}
+            //Assert
+            var in1 = new string[]{"A","B"};
+            var in2 = new string[]{"C","D"};
+            var in3 = new string[][]{in1,in2};
 
-            var expected = new string[]{"A", "B", "C", "D"}
+            var expected = new string[]{"A", "B", "C", "D"};
 
-            var output = new string[] Iterators.Flatten<string[]>(input);
+            //Act
+            var output = Iterators.Flatten(in3);
 
+            //Assert
             Assert.Equal(expected, output);
-
-
         }
     }
 }

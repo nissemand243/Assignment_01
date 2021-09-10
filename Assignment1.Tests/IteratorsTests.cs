@@ -14,7 +14,7 @@ namespace Assignment1.Tests
 
             var expected = new string[]{"A", "B", "C", "D"}
 
-            var output = new string[] Iterators.Flatten(input);
+            var output = new string[] Iterators.Flatten<string[]>(input);
 
             Assert.Equal(expected, output);
 

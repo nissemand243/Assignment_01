@@ -23,14 +23,30 @@ namespace Assignment1
             }
         }
 
-        public static IEnumerable<(int width, int height)> Resolution(string resolutions)
+        public static IEnumerable<(int width, int height)> Resolution(IEnumerable<string> resolutions)
         {
-            throw new NotImplementedException();
+            // (?<a>\d+) is named capture group, a and b is resolution numbers 
+              var reg = @"((?<a>\d+)x(?<b>\d+))+"; 
+         
+           foreach (string line in resolutions) {
+               foreach (Match m in Regex.Matches(line, reg))
+               {
+
+                   yield return (Int32.Parse(m.Groups["a"].Value), Int32.Parse(m.Groups["b"].Value));
+               }
+           }
         }
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            throw new NotImplementedException();
+            //divides the different tags up 
+             var reg = $@"(<{tag}.*?>(?<innerText>.+?)<\/{tag}>)+";
+
+            foreach (Match m in Regex.Matches(html, reg))
+            {
+                // looks at the tags and finds the inner text
+                yield return Regex.Replace(m.Groups["innerText"].Value, @"(<.+?>)|(<\/.+?>)", "");
+            }
         }
     }
 }

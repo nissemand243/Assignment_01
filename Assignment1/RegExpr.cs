@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Assignment1
 {
@@ -7,7 +8,19 @@ namespace Assignment1
     {
         public static IEnumerable<string> SplitLine(IEnumerable<string> lines)
         {
-            throw new NotImplementedException();
+            
+            string regexSplitPattern = "[^A-Za-z0-9]";
+            string regexMatchPattern = "[A-Za-z0-9]";
+
+            foreach (string s in lines)
+            {
+                foreach (string splitString in Regex.Split(s, regexSplitPattern))
+                {
+                    if (Regex.Match(splitString, regexMatchPattern).Success) {
+                        yield return splitString;
+                    }
+                }
+            }
         }
 
         public static IEnumerable<(int width, int height)> Resolution(string resolutions)

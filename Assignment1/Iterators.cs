@@ -16,9 +16,21 @@ namespace Assignment1
             }
         }
 
-        public static IEnumerable<T> Filter<T>(IEnumerable<T> items, Predicate<T> predicate)
+        public static IEnumerable<int> Filter<T>(IEnumerable<int> items, Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            foreach(int item in items)
+            {
+                Predicate<int> even = Even;
+                if(even(item))
+                {
+                    yield return item;
+                }
+            }
+            
+        }
+        public static bool Even(int i)
+        {
+            return i % 2 == 0;
         }
     }
 }

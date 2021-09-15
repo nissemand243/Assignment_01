@@ -37,5 +37,18 @@ namespace Assignment1.Tests
 
             Assert.Equal(expected, output);
         }
+
+        [Fact]
+        public void Filer_Given_Only_Odd_Numbers_Return_Nothing(){
+            //Arrange
+            var input = new string[]{"1","3","5", "7"};
+            
+            var expected = new string[]{};
+            //Act
+            Predicate<string> predicate = Iterators.Even;
+            var output = Iterators.Filter(input, predicate);
+
+            Assert.Equal(expected, output);
+        }
     }
 }

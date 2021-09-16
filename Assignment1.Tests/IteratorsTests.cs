@@ -27,6 +27,7 @@ namespace Assignment1.Tests
         [Fact]
         public void Filter_Given_1_2_3_4_5_return_2_4(){
             //Arrange
+
             var input = new string[]{"1","2","3","4","5"};
             
             var expected = new string[]{"2","4"};
@@ -46,6 +47,7 @@ namespace Assignment1.Tests
             var expected = new string[]{};
             //Act
             Predicate<string> predicate = Iterators.Even;
+
             var output = Iterators.Filter(input, predicate);
 
             Assert.Equal(expected, output);

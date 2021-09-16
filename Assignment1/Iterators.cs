@@ -16,11 +16,13 @@ namespace Assignment1
             }
         }
 
+
         public static IEnumerable<string> Filter<T>(IEnumerable<string> items, Predicate<T> predicate)
         {
             foreach(string item in items)
             {
                 Predicate<string> even = Even;
+
                 if(even(item))
                 {
                     yield return item;
@@ -28,9 +30,11 @@ namespace Assignment1
             }
             
         }
+
         public static bool Even(string i)
         {
             return  Int32.Parse(i) % 2 == 0;
+
         }
     }
 }
